@@ -16,16 +16,25 @@ helm install w2bro/direwolf
 | Variable    | Required | Description |
 |-------------|-----------|-------------|
 | `CALLSIGN`  | Yes | Your callsign & SSID, example `N0CALL-10` |
-| `PASSCODE`  | Yes | Passcode for igate login, [find passcode here] |
+| `PASSCODE`  | Yes | Passcode for igate login, [find passcode here] http://apps.magicbug.co.uk/passcode/|
 | `LATITUDE`  | Yes | Latitude for PBEACON, example `42^37.14N` |
 | `LONGITUDE` | Yes | Longitude for PBEACON, example `071^20.83W` |
 | `COMMENT`   | No  | Override PBEACON default comment, do not use the `~` character |
 | `SYMBOL`    | No  | APRS symbol for PBEACON, defaults to `igate` |
 | `IGSERVER`  | No  | Override with the APRS server for your region, default for North America `noam.aprs2.net` |
 | `ADEVICE`   | No  | Override Direwolf's ADEVICE for digipeater, default is `stdin null` for receive-only igate |
-| `FREQUENCY` | No  | Override `rtl_fm` input frequency, default `144.39M` North America APRS |
-| `DW_STANDALONE` | No | Set to any value to disable rtl_fm, useful in digipeater applications. Must also set `ADEVICE` |
-| `DWARGS` | No | Set to add/pass any arguments to the direwolf executable, example `-t 0` for no color logs |
+| `DWARGS`    | No  | Set to add/pass any arguments to the direwolf executable, example `-t 0` for no color logs |
+
+### Environment Notes
+IGSERVER
+ The current preferred way is to use one of these regional rotate addresses:
+	noam.aprs2.net 		- for North America
+	soam.aprs2.net		- for South America
+	euro.aprs2.net		- for Europe and Africa
+	asia.aprs2.net 		- for Asia
+	aunz.aprs2.net		- for Oceania
+
+
 
 ## Example Usage
 
