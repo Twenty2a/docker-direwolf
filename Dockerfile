@@ -1,11 +1,9 @@
 FROM debian:bookworm-slim as base
-RUN apt-get update && apt-get -y dist-upgrade \
+RUN apt-get update && apt-get -y upgrade \
  && apt-get install -y \
-    rtl-sdr \
-    libasound2 \
-    libusb-1.0-0 \
-    libhamlib2 \
-    libgps23 \
+    libasound2-dev \
+    libusb-1.0-0-dev \
+    libudev-dev \
  && rm -rf /var/lib/apt/lists/*
 
 FROM base as builder
@@ -13,9 +11,6 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     git \
     cmake \
-    libasound2-dev \
-    libusb-1.0-0-dev \
-    libudev-dev \
  && rm -rf /var/lib/apt/lists/*
 
 RUN git clone "https://github.com/wb2osz/direwolf.git" /tmp/direwolf \
@@ -37,6 +32,8 @@ ENV IGSERVER "euro.aprs2.net"
 ENV COMMENT "Direwolf in Docker w2bro/direwolf"
 ENV SYMBOL "igate"
 ENV ADEVICE "plughw:0,0"
+ENV LATITUDE "42^37.14N"
+ENV LONGITUDE "071^20.83W"
 
 
 RUN mkdir -p /etc/direwolf
